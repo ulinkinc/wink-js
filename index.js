@@ -9,7 +9,10 @@ var winkPort = undefined;
 var model = {
 	light_bulbs: require('./lib/model/light'),
 	eggtrays: require('./lib/model/eggtray'),
-	thermostats: require('./lib/model/thermostat')
+	thermostats: require('./lib/model/thermostat'),
+	locks: require('./lib/model/lock'), 
+	outlets: require('./lib/model/outlet'), 
+	sensors: require('./lib/model/sensor')
 };
 
 var cache = {
@@ -228,6 +231,12 @@ var wink = {
 						        		model.eggtrays(device, wink);
 						        	} else if ( device.thermostat_id !== undefined ) {
 						        		model.thermostats(device, wink);
+						        	} else if ( device.lock_id !== undefined ) {
+						        		model.locks(device, wink);
+						        	} else if ( device.outlet_id !== undefined ) {
+						        		model.outlets(device, wink);
+						        	} else if ( device.sensor_id !== undefined ) {
+						        		model.sensors(device, wink);
 						        	}
 						        }
 						        if (! process.env.WINK_NO_CACHE ) {
@@ -257,7 +266,13 @@ var wink = {
 									model.eggtrays(device, wink);
 								} else if ( device.thermostat_id !== undefined ) {
 									model.thermostats(device, wink);
-								}
+								} else if ( device.lock_id !== undefined ) {
+					        		model.locks(device, wink);
+					        	} else if ( device.outlet_id !== undefined ) {
+					        		model.outlets(device, wink);
+					        	} else if ( device.sensor_id !== undefined ) {
+					        		model.sensors(device, wink);
+					        	}
 								break;
 							}
 						}
@@ -313,6 +328,12 @@ var wink = {
 								model.eggtrays(data, wink);
 							} else if (device_group === "thermostats" ) {
 								model.thermostats(data, wink);
+							} else if (device_group === "locks" ) {
+								model.locks(data, wink);
+							} else if (device_group === "outlets" ) {
+								model.outlets(data, wink);
+							} else if (device_group === "sensors" ) {
+								model.sensors(data, wink);
 							}
 							callback(data);
 						});
