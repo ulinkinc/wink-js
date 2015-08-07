@@ -112,12 +112,13 @@ function DELETE(data, callback) {
 }
 
 var cacheIsStale = function(device) {
+    console.log('cacheIsStale, device is: ' + device);
     if (device == undefined) return true;
     var now = moment.utc();
     // if the cache time is < than 5 seconds
     console.log(now.diff(device.cachedAt, 'seconds'));
     return now.diff(device.cachedAt, 'seconds') > 5;
-}
+};
 
 var wink = {
     authenticate: function (auth_data, callback) {
@@ -227,7 +228,7 @@ var wink = {
                     device_type = 'wink_devices';
                 }
 
-                if (cache.device_type[device_type] && !cacheIsStale(cache.device[device_name])) {
+                if (cache.device_type[device_type] && !cacheIsStale(cache.device[device_type])) {
                     callback(cache.device_type[device_type]);
                 } else {
                     GET({
