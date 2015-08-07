@@ -66,7 +66,9 @@ function _http(data, callback) {
         });
 
         response.on('end', function () {
-            console.log("response in http:", str);
+            if (process.env.WINK_HTTP_TRACE) {
+                console.log("response in http:", str);
+            }
             try {
                 str = JSON.parse(str);
             } catch (e) {
@@ -111,12 +113,16 @@ function DELETE(data, callback) {
     _http(data, callback);
 }
 
+/**
+ * Helper function to determine if the cache is stale for the
+ * particular device
+ * @param device
+ * @returns {boolean}
+ */
 var cacheIsStale = function(device) {
-    console.log('cacheIsStale, device is: ' + device);
     if (device == undefined) return true;
     var now = moment.utc();
     // if the cache time is < than 5 seconds
-    console.log(now.diff(device.cachedAt, 'seconds'));
     return now.diff(device.cachedAt, 'seconds') > 5;
 };
 
@@ -290,12 +296,11 @@ var wink = {
                             }
                         }
                         if (!process.env.WINK_NO_CACHE) {
-                            console.log('Cachingin device');
                             // set the cache time
                             device.cachedAt = moment.utc();
                             cache.device[device_name] = device;
                         }
-                        console.log("returning device:", device);
+                        //console.log("returning device:", device);
                         callback(device);
                     });
                 }
