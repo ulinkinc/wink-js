@@ -288,12 +288,13 @@ var wink = {
                                 break;
                             }
                         }
-                        console.log("returning device:", device);
                         if (!process.env.WINK_NO_CACHE) {
+                            console.log('Cachingin device');
                             // set the cache time
                             device.cachedAt = moment.utc();
                             cache.device[device_name] = device;
                         }
+                        console.log("returning device:", device);
                         callback(device);
                     });
                 }
