@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "async": "*",
-    "config-file": "~0.1.8"
+    "config-file": "~0.1.8",
+    "moment": "~2.10.6"
   },
   "devDependencies": {
     "chai": "~2.2.0",
@@ -20,8 +21,7 @@
     "grunt-mocha-test": "0.12.7",
     "grunt-apimock": "~0.1.2",
     "grunt-env": "~0.4.4",
-    "mocha": "~2.2.4",
-    "moment": "~2.10.6"
+    "mocha": "~2.2.4"
   },
   "engines": {
     "node": ">= 0.10.0"
