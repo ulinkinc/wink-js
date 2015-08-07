@@ -115,6 +115,7 @@ var cacheIsStale = function(device) {
     if (device == undefined) return true;
     var now = moment.utc();
     // if the cache time is < than 5 seconds
+    console.log(now.diff(device.cachedAt, 'seconds'));
     return now.diff(device.cachedAt, 'seconds') > 5;
 }
 
@@ -249,6 +250,8 @@ var wink = {
                             }
                         }
                         if (!process.env.WINK_NO_CACHE) {
+                            // set the cache time
+                            data.cachedAt = moment.utc();
                             cache.device_type[device_type] = data;
                         }
                         callback(data);
