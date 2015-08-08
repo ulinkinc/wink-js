@@ -261,6 +261,7 @@ var wink = {
                             data.cachedAt = moment.utc();
                             cache.device_type[device_type] = data;
                         }
+                        console.log("device type: " +device_type+" DEVICES: ",data );
                         callback(data);
                     });
                 }
