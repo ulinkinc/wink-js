@@ -66,9 +66,9 @@ function _http(data, callback) {
         });
 
         response.on('end', function () {
-            //if (process.env.WINK_HTTP_TRACE) {
+            if (process.env.WINK_HTTP_TRACE) {
                 console.log("response in http:", str);
-            //}
+            }
             try {
                 str = JSON.parse(str);
             } catch (e) {
