@@ -296,6 +296,8 @@ var wink = {
                                 } else if (device.sensor_id !== undefined) {
                                     model.sensors(device, wink);
                                 }
+
+                                console.log("MODEL: ", model);
                                 break;
                             }
                         }
