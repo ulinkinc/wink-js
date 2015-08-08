@@ -300,7 +300,8 @@ var wink = {
                             device.cachedAt = moment.utc();
                             cache.device[device_name] = device;
                         }
-                        //console.log("returning device:", device);
+
+                        console.log("returning device:", device);
                         callback(device);
                     });
                 }
