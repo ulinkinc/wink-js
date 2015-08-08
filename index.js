@@ -252,7 +252,7 @@ var wink = {
                                 model.locks(device, wink);
                             } else if (device.binary_switch_id !== undefined) {
                                 model.outlets(device, wink);
-                            } else if (device.sensor_id !== undefined) {
+                            } else if (device.sensor_pod_id !== undefined) {
                                 model.sensors(device, wink);
                             }
                         }
@@ -261,7 +261,6 @@ var wink = {
                             data.cachedAt = moment.utc();
                             cache.device_type[device_type] = data;
                         }
-                        console.log("device type: " +device_type+" DEVICES: ",data );
                         callback(data);
                     });
                 }
@@ -289,16 +288,10 @@ var wink = {
                                 } else if (device.lock_id !== undefined) {
                                     model.locks(device, wink);
                                 } else if (device.binary_switch_id !== undefined) {
-                                    console.log('got outlet: ', device);
-
                                     model.outlets(device, wink);
-                                    console.log('now outlet: ', device);
-
-                                } else if (device.sensor_id !== undefined) {
+                                } else if (device.sensor_pod_id !== undefined) {
                                     model.sensors(device, wink);
                                 }
-
-                                console.log("MODEL: ", device);
                                 break;
                             }
                         }
