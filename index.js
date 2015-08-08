@@ -251,9 +251,7 @@ var wink = {
                             } else if (device.lock_id !== undefined) {
                                 model.locks(device, wink);
                             } else if (device.outlet_id !== undefined) {
-                                console.log('got outlet: ', device);
                                 model.outlets(device, wink);
-                                console.log('now outlet: ', device);
                             } else if (device.sensor_id !== undefined) {
                                 model.sensors(device, wink);
                             }
@@ -290,7 +288,11 @@ var wink = {
                                 } else if (device.lock_id !== undefined) {
                                     model.locks(device, wink);
                                 } else if (device.outlet_id !== undefined) {
+                                    console.log('got outlet: ', device);
+
                                     model.outlets(device, wink);
+                                    console.log('now outlet: ', device);
+
                                 } else if (device.sensor_id !== undefined) {
                                     model.sensors(device, wink);
                                 }
@@ -303,7 +305,7 @@ var wink = {
                             cache.device[device_name] = device;
                         }
 
-                        console.log("returning device:", device);
+                        //console.log("returning device:", device);
                         callback(device);
                     });
                 }
