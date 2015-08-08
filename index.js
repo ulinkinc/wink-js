@@ -350,7 +350,7 @@ var wink = {
                                 model.thermostats(data, wink);
                             } else if (device_group === "locks") {
                                 model.locks(data, wink);
-                            } else if (device_group === "outlets") {
+                            } else if (device_group === "binary_switches") {
                                 model.outlets(data, wink);
                             } else if (device_group === "sensors") {
                                 model.sensors(data, wink);
