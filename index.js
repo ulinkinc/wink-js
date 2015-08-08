@@ -297,7 +297,7 @@ var wink = {
                                     model.sensors(device, wink);
                                 }
 
-                                console.log("MODEL: ", model);
+                                console.log("MODEL: ", device);
                                 break;
                             }
                         }
