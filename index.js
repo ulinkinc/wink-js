@@ -240,7 +240,6 @@ var wink = {
                     GET({
                         path: "/users/" + user_id + "/" + device_type
                     }, function (data) {
-                        console.log("HTTP devices:", data);
                         for (var dataIndex in data.data) {
                             device = data.data[dataIndex];
                             if (device.light_bulb_id !== undefined) {
