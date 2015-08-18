@@ -295,7 +295,7 @@ var wink = {
                                 break;
                             }
                         }
-                        if (!process.env.WINK_NO_CACHE) {
+                        if (!process.env.WINK_NO_CACHE && device != undefined) {
                             // set the cache time
                             device.cachedAt = moment.utc();
                             cache.device[device_name] = device;
